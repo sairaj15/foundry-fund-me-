@@ -1,4 +1,4 @@
-//SPDX.License-Identifier: MIT
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
 import {Test, console} from "forge-std/Test.sol";
@@ -19,5 +19,10 @@ contract FundMeTest is Test {
         // console.log(fundMe.I_OWNER);
         // console.log(msg.sender);
         assertEq(fundMe.I_OWNER(), address(this));
+    }
+
+    function testPriceFeedVersionIsAccurate() public {
+      uint256 version = fundMe.getVersion();
+      assertEq(version, 4);
     }
 }
